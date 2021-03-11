@@ -22,8 +22,8 @@ function build(config) {
   let compiler = webpack(config);
   console.log(chalk.green(config));
   compiler.run((err, stats) => {
-    console.log(JSON.stringify(err));
-    console.log(chalk.green("Compiled Successfully"));
+    console.log(stats);
+    // console.log(chalk.green("Compiled Successfully"));
   });
 }
 

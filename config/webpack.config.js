@@ -1,32 +1,72 @@
-const paths = require("../config/paths");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const paths = require('../config/paths');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const cssRegex = /\.css$/;
 
 module.exports = function (env) {
-  const isEnvDevelopment = env === "development";
-  const isEnvProduction = env === "production";
+  const isEnvDevelopment = true;
+  const isEnvProduction = false;
+
+  function getStyleLoaders(cssOptions) {
+    const loaders = [
+      isEnvDevelopment && require.resolve('style-loader'),
+      { loader: 'css-loader', options: cssOptions }
+    ].filter(Boolean);
+    return loaders;
+  }
+
   return {
-    mode: isEnvProduction ? "production" : isEnvDevelopment && "development",
+    mode: isEnvProduction ? 'production' : isEnvDevelopment && 'development',
     entry: paths.appIndexJs,
     output: {
-      path: paths.appBuild,
+      path: paths.appBuild
     },
     module: {
       rules: [
         {
           test: /\.(js|jsx|ts|tsx)$/,
           include: paths.appSrc,
-          loader: "babel-loader",
+          loader: require.resolve('babel-loader'),
           options: {
-            presets: ["@babel/preset-react"],
-          },
+            customize: require.resolve(
+              'babel-preset-react-app/webpack-overrides'
+            ),
+            presets: [
+              [require.resolve('babel-preset-react-app'),
+              {
+                runtime: 'automatic'
+              }]
+            ]
+          }
         },
-      ],
+        {
+          test: cssRegex,
+          use: getStyleLoaders({
+            importLoaders: 1,
+            sourceMap: isEnvDevelopment
+          })
+        },
+        {
+          test: /\.png$/
+        },
+        {
+          test: /\.svg$/,
+          use: [
+            {
+              loader: require.resolve('svg-url-loader'),
+              options: {
+                limit: 10000
+              }
+            }
+          ]
+        }
+      ]
     },
     plugins: [
       new HtmlWebpackPlugin({
         template: paths.appHtml,
-        inject: true,
-      }),
-    ],
+        inject: true
+      })
+    ]
   };
 };
