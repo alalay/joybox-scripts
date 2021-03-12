@@ -29,7 +29,7 @@ function build(config) {
 
 const configFactory = require("../config/webpack.config");
 
-const config = configFactory(process.env.NODE_ENV);
+const config = configFactory("production");
 
 /**
  * 3.如果build不为空，清空build目录
