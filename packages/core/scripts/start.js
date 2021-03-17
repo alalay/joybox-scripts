@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
-const configFactory = require('../config/webpack.config');
-const createDevServerConfig = require('../config/webpackDevServer.config');
+const configFactory = require('../../../config/webpack.config');
+const createDevServerConfig = require('../../../config/webpackDevServer.config');
 const chalk = require('chalk');
 
 // 1.设置环境变量

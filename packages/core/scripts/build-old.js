@@ -1,6 +1,6 @@
 const fs = require("fs-extra");
-const paths = require("../config/paths");
-const pahts = require("../config/paths");
+const paths = require("../../../config/paths");
+const pahts = require("../../../config/paths");
 const webpack = require("webpack");
 const chalk = require("chalk");
 /**
@@ -27,7 +27,7 @@ function build(config) {
   });
 }
 
-const configFactory = require("../config/webpack.config");
+const configFactory = require("../../../config/webpack.config");
 
 const config = configFactory("production");
 
