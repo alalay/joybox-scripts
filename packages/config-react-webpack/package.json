@@ -1,0 +1,8 @@
+{
+  "name": "@alalay/scripts-config-react-webpack",
+  "version": "0.0.0",
+  "description": "Webpack configuration for @alalay/scripts-core",
+  "main": "index.js",
+  "author": "alalay",
+  "license": "MIT"
+}
