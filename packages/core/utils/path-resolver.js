@@ -5,7 +5,7 @@ const path = require('path');
  * Resolve the bin module executable path
  * @param {*} modName The bin module name
  */
-function resolveBin(modName, { executable = modName, cwd = process.cwd() }) {
+function resolveBin(modName, { executable = modName, cwd = process.cwd() } = {}) {
   let systemCommandPath;
   try {
     systemCommandPath = fs.realpathSync(which.sync(executable));
