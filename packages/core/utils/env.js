@@ -22,6 +22,12 @@ function createUserConfigGetter(env = process.env) {
   };
 }
 
+function getEnv(options) {
+  const env = Object.create(process.env);
+  return env;
+}
+
 module.exports = {
-  createUserConfigGetter
+  createUserConfigGetter,
+  getEnv
 };

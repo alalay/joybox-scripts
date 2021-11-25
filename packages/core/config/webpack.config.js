@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const cssRegex = /\.css$/;
 
 module.exports = function (env) {
+  env = 'production';
   const isEnvDevelopment = env === 'development';
   const isEnvProduction = env === 'production';
   const getStyleLoaders = (cssOptions, preProcessor) => {
