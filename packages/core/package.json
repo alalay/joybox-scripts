@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "bin": {
-    "joybox-scripts": "index.js"
+    "joybox-scripts": "./index.js"
   },
   "dependencies": {
     "@babel/preset-react": "^7.16.0",
