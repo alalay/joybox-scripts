@@ -9,6 +9,10 @@ function getWebpackConfiguration(presetApi, option) {
   
 }
 
+const getReactWebpackConfiguration = require('@talend/scripts-config-react-webpack');
+
 module.exports = {
-  getWebpackConfiguration
+  getWebpackConfiguration(...args){
+      return [].concat(getReactWebpackConfiguration(...args));
+  }
 };
